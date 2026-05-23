@@ -99,11 +99,16 @@ body { font-family: 'IBM Plex Sans', sans-serif; background: var(--bg); color: v
   grid-template-columns: 70px 1fr auto;
   gap: 0 18px;
   align-items: start;
+  transition: all 0.25s ease;
 }
 .aula-card.t-prova   { border-left-color: var(--prova); }
 .aula-card.t-recup   { border-left-color: var(--recup); }
 .aula-card.t-revisao { border-left-color: var(--revisao); }
 .aula-card.t-ponte   { border-left-color: var(--ponte); }
+.aula-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+}
 
 /* Coluna esquerda */
 .aula-id { padding-top: 2px; }
@@ -117,7 +122,7 @@ body { font-family: 'IBM Plex Sans', sans-serif; background: var(--bg); color: v
 .aula-tags   { display:flex; flex-wrap:wrap; gap:5px; }
 
 /* Tags */
-.tag          { font-size:11px; border-radius:20px; padding:2px 9px; border:0.5px solid var(--border); color:var(--gray); background:var(--bg); }
+.tag          { font-size:11px; border-radius:20px; padding:2px 9px; border:0.5px solid var(--border); color:var(--gray); background:var(--bg); transition: opacity 0.2s ease, transform 0.2s ease; }
 .tag-aula     { background:var(--uc-light); color:var(--uc-dark); border-color:#E4B870; font-weight:600; }
 .tag-slides   { background:var(--uc-light); color:var(--uc-dark); border-color:#E4B870; }
 .tag-dinamica { background:#EEEDFE; color:#3C3489; border-color:#CECBF6; }
@@ -126,6 +131,7 @@ body { font-family: 'IBM Plex Sans', sans-serif; background: var(--bg); color: v
 .tag-recup    { background:#EEEDFE; color:#3C3489; border-color:#CECBF6; font-weight:600; }
 .tag-revisao  { background:#E6F1FB; color:#0C447C; border-color:#B5D4F4; font-weight:600; }
 .tag-ponte    { background:#E1F5EE; color:#085041; border-color:#9FE1CB; font-weight:600; }
+a.tag:hover   { opacity: 0.85; transform: scale(1.03); }
 
 /* Coluna direita */
 .aula-topico { text-align:right; flex-shrink:0; padding-top:2px; }
@@ -137,6 +143,33 @@ body { font-family: 'IBM Plex Sans', sans-serif; background: var(--bg); color: v
 ────────────────────────────── */
 footer { background:var(--dark); color:#5A4A30; text-align:center; padding:20px; font-size:11.5px; font-family:'IBM Plex Mono',monospace; border-top:3px solid var(--uc); margin-top:8px; }
 footer span { color:var(--uc-mid); }
+
+/* ──────────────────────────────
+   BOTÃO VOLTAR AO TOPO
+────────────────────────────── */
+#btn-topo {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--uc);
+  color: var(--white);
+  border: none;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: all 0.2s ease;
+}
+#btn-topo.visible { display: flex; }
+#btn-topo:hover   { background: var(--uc-dark); transform: translateY(-2px); }
+#btn-topo:focus   { outline: 3px solid var(--uc-light); outline-offset: 2px; }
 
 /* ──────────────────────────────
    RESPONSIVE
@@ -217,6 +250,7 @@ footer span { color:var(--uc-mid); }
 /* PRINT */
 @media print {
   body { background: white; }
+  #btn-topo { display: none !important; }
   .topo, .meta-bar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .aula-card { break-inside: avoid; }
 }

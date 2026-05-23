@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plano de Aula SA 14 — Ferramentas da Qualidade I</title>
+<meta name="description" content="Plano de aula SA 14 — Ferramentas da Qualidade I para o curso Técnico em Desenvolvimento de Sistemas · SENAI Umuarama">
+<meta name="theme-color" content="#0A2342">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -25,6 +27,7 @@
     --purple:     #6A0572;
   }
 
+  html { scroll-behavior: smooth; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
@@ -102,7 +105,7 @@
   .header-title span { color: var(--yellow); }
   .header-sub {
     font-size: 13.5px;
-    color: #94A3B8;
+    color: #64748B;
     line-height: 1.6;
   }
   .header-sub .uc-nome {
@@ -441,8 +444,9 @@
     align-items: center;
     gap: 8px;
     white-space: nowrap;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
   }
+  .btn-action:active { transform: scale(0.97); }
   .btn-imprimir {
     background: var(--dark);
     color: var(--white);
@@ -453,15 +457,19 @@
     box-shadow: 0 4px 12px rgba(10,35,66,0.4);
   }
   .btn-pdf {
-    background: transparent;
-    color: var(--teal);
+    background: var(--dark);
+    color: var(--white);
     box-shadow: none;
-    border: none;
   }
   .btn-pdf:hover {
-    background: var(--teal);
-    color: var(--white);
-    box-shadow: 0 4px 12px rgba(2,128,144,0.4);
+    background: #1a3d66;
+    box-shadow: 0 4px 12px rgba(10,35,66,0.4);
+  }
+  button:focus,
+  .btn-action:focus,
+  a:focus {
+    outline: 3px solid var(--yellow);
+    outline-offset: 2px;
   }
 
   /* IMPRESSÃO / SALVAR EM PDF */
@@ -567,17 +575,43 @@
     .btn-action          { padding: 8px 12px; font-size: 11.5px; }
     footer               { padding: 16px; font-size: 11px; }
   }
+
+  /* ── BOTÃO VOLTAR AO TOPO ── */
+  #btn-topo {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--dark);
+    color: var(--white);
+    border: none;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    z-index: 999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.2s ease;
+  }
+  #btn-topo.visible { display: flex; }
+  #btn-topo:hover   { background: var(--teal); transform: translateY(-2px); }
+  #btn-topo:focus   { outline: 3px solid var(--teal-light); outline-offset: 2px; }
+  @media print { #btn-topo { display: none !important; } }
 </style>
 </head>
 <body>
 
 <div class="btn-group">
-  <button class="btn-action btn-imprimir" onclick="window.print()">🖨️ Imprimir</button>
-  <button class="btn-action btn-pdf" onclick="salvarPDF()">📄 Salvar PDF</button>
+  <button class="btn-action btn-imprimir" onclick="window.print()" aria-label="Imprimir plano de aula">🖨️ Imprimir</button>
+  <button class="btn-action btn-pdf" onclick="salvarPDF()" aria-label="Exportar plano de aula como PDF">📄 Exportar PDF</button>
 </div>
 
 <!-- HEADER -->
-<div class="page-header">
+<header class="page-header">
   <div class="header-inner">
     <div>
       <div class="header-label">
@@ -596,12 +630,12 @@
       </p>
     </div>
   </div>
-</div>
+</header>
 
-<div class="container">
+<main class="container">
 
   <!-- TEMA -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">🎯</span>
       <span class="section-title">Tema da Aula</span>
@@ -612,10 +646,10 @@
         🔖 <span>Ferramentas da Qualidade I — Histograma, Brainstorming e Fluxograma de processos</span>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- OBJETIVOS -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">🏆</span>
       <span class="section-title">Objetivos de Aprendizagem</span>
@@ -631,10 +665,10 @@
         <li><span class="obj-num">5</span>Relacionar Histograma, Brainstorming e Fluxograma a situações reais do desenvolvimento de sistemas</li>
       </ul>
     </div>
-  </div>
+  </section>
 
   <!-- CONTEÚDO -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">📚</span>
       <span class="section-title">Conteúdo</span>
@@ -651,10 +685,10 @@
         <div class="content-item"><div class="content-bullet"></div>Comparativo das 3 ferramentas: objetivo, quando usar, limitações</div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- ORGANIZAÇÃO DO TEMPO -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">⏱️</span>
       <span class="section-title">Organização do Tempo</span>
@@ -696,10 +730,10 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </section>
 
   <!-- DINÂMICA -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">🎮</span>
       <span class="section-title">Dinâmica</span>
@@ -750,10 +784,10 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </section>
 
   <!-- AVALIAÇÃO -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">📝</span>
       <span class="section-title">Avaliação</span>
@@ -765,10 +799,10 @@
         <li><span class="obj-num">2</span>Questões Discursivas</li>
       </ul>
     </div>
-  </div>
+  </section>
 
   <!-- CONEXÃO -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">🔗</span>
       <span class="section-title">Conexão com Conteúdos</span>
@@ -786,10 +820,10 @@
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- RECURSOS -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">📦</span>
       <span class="section-title">Recursos Necessários</span>
@@ -806,10 +840,10 @@
         <div class="recurso-item"><span class="recurso-icon">🖊️</span><span>Quadro branco / Marcador</span></div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- OBSERVAÇÕES -->
-  <div class="section">
+  <section class="section">
     <div class="section-header">
       <span class="section-icon">📌</span>
       <span class="section-title">Observações do Professor</span>
@@ -818,20 +852,32 @@
     <div class="section-body">
       <div class="obs-box"></div>
     </div>
-  </div>
+  </section>
 
-</div>
+</main>
 
 <footer>
   Plano de Aula · <span>SA 14 — Ferramentas da Qualidade I</span> · Prof. Julio Cesar · Técnico em Desenvolvimento de Sistemas · SENAI Umuarama · 2026
 </footer>
 
+<button id="btn-topo" aria-label="Voltar ao topo">↑</button>
+
 <script>
-  function salvarPDF() {
+  const salvarPDF = () => {
     const tituloOriginal = document.title;
     document.title = 'Plano_Aula_SA14_Ferramentas_Qualidade_I';
     window.print();
     setTimeout(() => { document.title = tituloOriginal; }, 1000);
+  };
+
+  const btnTopo = document.getElementById('btn-topo');
+  window.addEventListener('scroll', () => {
+    if (btnTopo) btnTopo.classList.toggle('visible', window.scrollY > 400);
+  });
+  if (btnTopo) {
+    btnTopo.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 </script>
 </body>
