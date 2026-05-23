@@ -515,10 +515,57 @@
     .section.break-before-print { break-before: page; }
   }
 
-  @media (max-width: 720px) {
-    .header-inner { flex-direction: column; padding: 28px 20px 28px 32px; }
-    .container { padding: 24px 16px; }
-    .content-grid, .connection-row, .recursos-grid { grid-template-columns: 1fr; }
+  /* ── TABLET (≤ 960px) ── */
+  @media (max-width: 960px) {
+    .header-inner  { padding: 36px 32px 36px 44px; gap: 24px; }
+    .container     { padding: 28px 32px; }
+    .header-title  { font-size: 28px; }
+    .recursos-grid { grid-template-columns: 1fr 1fr; }
+    .btn-group     { top: 16px; right: 16px; }
+  }
+
+  /* ── MOBILE (≤ 768px) ── */
+  @media (max-width: 768px) {
+    .header-inner   { flex-direction: column; padding: 28px 20px 28px 28px; gap: 14px; }
+    .container      { padding: 20px 16px; }
+    .header-title   { font-size: 22px; }
+    .header-label   { font-size: 13px; gap: 6px; }
+    .header-sub     { font-size: 12.5px; }
+    .uc-nome        { white-space: normal; }
+    .section-header { padding: 14px 18px; gap: 10px; }
+    .section-body   { padding: 18px; }
+    .content-grid   { grid-template-columns: 1fr; }
+    .connection-row { grid-template-columns: 1fr; }
+    .recursos-grid  { grid-template-columns: 1fr 1fr; }
+    .time-table,
+    .cenarios-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .btn-group      { top: auto; bottom: 20px; right: 16px; flex-direction: row; }
+    .btn-action     { padding: 9px 14px; font-size: 12px; }
+  }
+
+  /* ── SMALL MOBILE (≤ 480px) ── */
+  @media (max-width: 480px) {
+    .page-header::before { width: 4px; }
+    .page-header::after  { left: 4px; width: 2px; }
+    .header-inner        { padding: 20px 14px 20px 18px; gap: 10px; }
+    .container           { padding: 14px 12px; }
+    .header-title        { font-size: 18px; }
+    .header-label        { font-size: 12px; gap: 5px; margin-bottom: 10px; }
+    .header-label .hl-sa   { font-size: 12px; padding: 1px 8px; }
+    .header-label .hl-data { font-size: 11px; }
+    .header-sub          { font-size: 12px; }
+    .section-header      { padding: 12px 14px; }
+    .section-icon        { font-size: 16px; }
+    .section-title       { font-size: 14px; }
+    .section-body        { padding: 14px; }
+    .recursos-grid       { grid-template-columns: 1fr; }
+    .obj-list li         { padding: 10px 12px; font-size: 13px; }
+    .content-item        { font-size: 12px; padding: 9px 12px; }
+    .dinamica-body       { padding: 14px; }
+    .dinamica-step       { font-size: 12.5px; }
+    .btn-group           { bottom: 14px; right: 12px; gap: 6px; }
+    .btn-action          { padding: 8px 12px; font-size: 11.5px; }
+    footer               { padding: 16px; font-size: 11px; }
   }
 </style>
 </head>
